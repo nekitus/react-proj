@@ -6,7 +6,7 @@ module.exports = {
 	entry: __dirname + '/src/index',
 	output: {
 	    filename: 'build.js',
-        path: __dirname + '/build',
+        path: __dirname + '/build'
     },
 	watch: true,
     plugins: [
@@ -23,8 +23,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-
-                        presets: ['react', 'env']
+                        presets: ['react','env']
                     }
                 }
                 // query: {

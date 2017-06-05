@@ -43,8 +43,6 @@ function createRoutes(store){
         }
         cb();
     };
-    ///
-
 
 
     return (
