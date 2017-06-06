@@ -118,7 +118,7 @@ const sumzz = (function (amount = 0){
             }
             amount += x;
 
-            return inside((x) => {})
+            return inside
         } else {
             const result = amount;
             amount = 0;
@@ -128,17 +128,50 @@ const sumzz = (function (amount = 0){
 })();
 
 
-const sumx = (function (){
+/*const sumx = (function (){
     return function sum(z, amount = 0) {
         return function(x){
-            if(!x) {return amount}
+            if(!x) {
+                return amount
+            }
             amount += x;
             return sum(x, amount)
         }
     }
+})();*/
+
+
+/*
+const sum = (function (){
+    return (function sum(z, amount = 0) {
+        return function(x){
+            if(!x) {
+                return amount
+            }
+            if (typeof x !== "number") {
+                throw new TypeError('"x" is not a number');
+            }
+            return sum(x, amount + x)
+        }
+    })
+})()();
+*/
+
+const sum = (() => {
+    return (function sum(z, amount = 0) {
+        return x => {
+            if(!x) {
+                return amount
+            }
+            if (typeof x !== "number") {
+                throw new TypeError('"x" is not a number');
+            }
+            return sum(x, amount + x)
+        }
+    })
 })()();
 
 
-//var s = sum();
-console.log(sumx(2)(4)());
-console.log(sumx(2)(4)(3)(1)());
+console.log(sum(2)(3)(5)(5)());
+console.log(sum(2)()(5)(5)());
+console.log(sum(2)("z")(3)(1)());
